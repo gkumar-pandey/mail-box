@@ -1,7 +1,9 @@
-import React from "react";
+import { createContext, useContext } from "react";
 
-const TrashContext = () => {
-  return <div>TrashContext</div>;
+const TrashContext = createContext<any | undefined>(undefined);
+
+export const TrashContextProvider = ({ children }: any) => {
+  return <TrashContext.Provider value={{}}>{children}</TrashContext.Provider>;
 };
 
-export default TrashContext;
+export const useTrash = () => useContext(TrashContext);
