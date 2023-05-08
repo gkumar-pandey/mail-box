@@ -13,8 +13,6 @@ export const actions = {
   ADD_TO_SPAM: "ADD_TO_SPAM",
   RESTORE_FROM_SPAM: "RESTORE_FROM_SPAM",
   DELETE_FROM_TRASH: "DELETE_FROM_TRASH",
-  ADD_CATEGORY: "ADD_CATEGORY",
-  REMOVE_CATEGORY: "REMOVE_CATEGORY",
   MARK_STAR: "MARK_STAR",
   MARK_AS_READ: "MARK_AS_READ"
 };
@@ -22,6 +20,7 @@ export const actions = {
 export const filterActions = {
   FILTER_BY_UNREAD: "FILTER_BY_UNREAD",
   FILTER_BY_STARRED: "FILTER_BY_STARRED",
+  SEARCH: "SEARCH",
   RESET: "RESET"
 };
 
@@ -33,7 +32,8 @@ const initialState = {
 
 const filterInitialState = {
   unreadFilter: false,
-  starredFilter: false
+  starredFilter: false,
+  searchQuery: ""
 };
 
 export const MailContextProvider = ({ children }: any) => {
@@ -47,7 +47,6 @@ export const MailContextProvider = ({ children }: any) => {
     const url = "https://example.com/api/allemails";
     try {
       const res: any = await fakeFetch(url);
-
       dispatchMail({ type: actions.ADD_TO_INBOX, payload: res.data });
     } catch (error) {
       console.log(error);
@@ -63,7 +62,6 @@ export const MailContextProvider = ({ children }: any) => {
       value={{
         mails,
         dispatchMail,
-
         filterInputs,
         dispatchInputs
       }}
