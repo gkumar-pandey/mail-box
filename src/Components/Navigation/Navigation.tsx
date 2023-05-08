@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   const getActiveStyles = ({ isActive }: any) => ({
-    backgroundColor: isActive ? "green" : ""
+    backgroundColor: isActive ? "#f00a4f" : "#fff",
+    color: isActive ? "#fff" : "#f00a4f"
   });
 
   return (

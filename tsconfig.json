@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "src/Reducer/MailReducer/mailReducer.tslReducer.ts"  ]
 }

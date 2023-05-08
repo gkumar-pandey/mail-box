@@ -1,4 +1,4 @@
-import { mailReducer } from "./MailReducer/mailReducer";
-import { trashReducer } from "./TrashReducer/trashReducer";
-import { spamReducer } from "./SpamReducer/spamReducer";
-export {mailReducer,trashReducer,spamReducer}
+import { mailReducer } from  "./MailReducer/mailReducer";
+import filterInputReducer from "./FilterReducer/FilterInputReducer";
+ 
+export {mailReducer,filterInputReducer}

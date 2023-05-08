@@ -1,0 +1,15 @@
+.filter {
+  margin: 1rem;
+}
+
+.filter fieldset {
+  padding: 0.5rem;
+}
+.filter fieldset input {
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.filter fieldset label {
+  margin: 0 0.8rem;
+}

@@ -2,25 +2,19 @@ import React from "react";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useMail } from "../../Context";
 import { useLocation } from "react-router-dom";
+import { actions } from "../../Context/MailContext/MailContext";
 
 const EmailCard = (props: any) => {
   const { mId, subject, content, isStarred, unread } = props;
 
-  const {
-    starOnClickHandler,
-    trashBtnHandler,
-    spamBtnHandler,
-    markAsReadBtnHandler,
-    restoreFromTrash,
-    restoreFromSpam
-  } = useMail();
+  const { dispatchMail } = useMail();
 
   const location = useLocation();
 
   return (
     <div
       className="card"
-      style={{ backgroundColor: unread ? "#e0e0e0" : "red" }}
+      style={{ backgroundColor: unread ? "#DAF5FF" : "#fff" }}
     >
       <div className="card-wrapper">
         <div className="email-subject">
@@ -30,7 +24,9 @@ const EmailCard = (props: any) => {
               fontSize: "1.3rem",
               cursor: "pointer"
             }}
-            onClick={() => starOnClickHandler(mId)}
+            onClick={() =>
+              dispatchMail({ type: actions.MARK_STAR, payload: mId })
+            }
           >
             {isStarred ? <AiFillStar /> : <AiOutlineStar className="star" />}
           </div>
@@ -42,18 +38,50 @@ const EmailCard = (props: any) => {
           <div>view details</div>
           <div>
             {location.pathname === "/trash" ? (
-              <button onClick={() => restoreFromTrash(mId)}>Restore</button>
+              <button
+                onClick={() =>
+                  dispatchMail({
+                    type: actions.RESTORE_FROM_TRASH,
+                    payload: props
+                  })
+                }
+              >
+                Restore
+              </button>
             ) : (
-              <button onClick={() => trashBtnHandler(mId)}>Trash</button>
+              <button
+                onClick={() =>
+                  dispatchMail({ type: actions.ADD_TO_TRASH, payload: props })
+                }
+              >
+                Trash
+              </button>
             )}
 
-            <button onClick={() => markAsReadBtnHandler(mId)}>
+            <button
+              onClick={() =>
+                dispatchMail({ type: actions.MARK_AS_READ, payload: mId })
+              }
+            >
               {!unread ? "Mark As Unread" : "Mark As Read"}
             </button>
             {location.pathname === "/spam" ? (
-              <button onClick={() => restoreFromSpam(mId)}>Not Spam</button>
+              <button
+                onClick={() =>
+                  dispatchMail({
+                    type: actions.RESTORE_FROM_SPAM,
+                    payload: props
+                  })
+                }
+              >
+                Not Spam
+              </button>
             ) : (
-              <button onClick={() => spamBtnHandler(mId)}>
+              <button
+                onClick={() =>
+                  dispatchMail({ type: actions.ADD_TO_SPAM, payload: props })
+                }
+              >
                 Report to spam
               </button>
             )}
