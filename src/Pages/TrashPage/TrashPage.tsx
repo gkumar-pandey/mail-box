@@ -13,7 +13,7 @@ const TrashPage = () => {
         <h1>Trash Mails</h1>
       </div>
       <div>
-        {trash > 0 ? (
+        {trash.length > 0 ? (
           trash.map((mail: any) => <EmailCard key={mail.mId} {...mail} />)
         ) : (
           <div
