@@ -30,6 +30,11 @@ const InboxPage = () => {
     return filteredData;
   };
 
+  const unreadMails = inbox.reduce(
+    (acc: any, curr: any) => (curr.unread ? (acc += 1) : acc),
+    0
+  );
+
   return (
     <div>
       <div className="search-bar-container">
@@ -48,6 +53,9 @@ const InboxPage = () => {
       </div>
       <div>
         <Filters />
+        <h2 style={{ padding: "0 1rem", color: "#fff" }}>
+          Unreads : {unreadMails}
+        </h2>
       </div>
       <div>
         {filteredMails().map((mail: any) => (

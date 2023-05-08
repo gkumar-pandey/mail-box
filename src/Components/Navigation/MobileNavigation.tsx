@@ -1,4 +1,6 @@
 import React from "react";
+import { FaTrashAlt } from "react-icons/fa";
+import { RiInboxFill, RiSpam2Fill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 
 const MobileNavigation = () => {
@@ -10,13 +12,13 @@ const MobileNavigation = () => {
     <div className="mobile-navigation">
       <div className="nav-tab">
         <NavLink style={getActiveStyles} to={"/"} className={"link"}>
-          Inbox
+          <RiInboxFill /> Inbox
         </NavLink>
         <NavLink style={getActiveStyles} className="link" to={"/spam"}>
-          Spam
+          <RiSpam2Fill /> Spam
         </NavLink>
         <NavLink style={getActiveStyles} className="link" to={"/trash"}>
-          Trash
+          <FaTrashAlt /> Trash
         </NavLink>
       </div>
     </div>
