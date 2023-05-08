@@ -3,7 +3,9 @@ import { useMail } from "../../Context";
 import { EmailCard } from "../../Components";
 
 const TrashPage = () => {
-  const { mails } = useMail();
+  const {
+    mails: { trash }
+  } = useMail();
 
   return (
     <div>
@@ -11,9 +13,20 @@ const TrashPage = () => {
         <h1>Trash Mails</h1>
       </div>
       <div>
-        {mails.trash.map((mail: any) => (
-          <EmailCard key={mail.mId} {...mail} />
-        ))}
+        {trash > 0 ? (
+          trash.map((mail: any) => <EmailCard key={mail.mId} {...mail} />)
+        ) : (
+          <div
+            style={{
+              padding: "1rem",
+              textAlign: "center",
+              color: "#fff",
+              fontWeight: "bold"
+            }}
+          >
+            <h2>Trash is Empty</h2>
+          </div>
+        )}
       </div>
     </div>
   );

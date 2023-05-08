@@ -3,7 +3,9 @@ import { useMail } from "../../Context";
 import { EmailCard } from "../../Components";
 
 const SpamPage = () => {
-  const { mails } = useMail();
+  const {
+    mails: { spam }
+  } = useMail();
 
   return (
     <div>
@@ -11,9 +13,13 @@ const SpamPage = () => {
         <h1>Spam Mails</h1>
       </div>
       <div>
-        {mails.spam.map((mail: any) => (
-          <EmailCard key={mail.mId} {...mail} />
-        ))}
+        {spam.length > 0 ? (
+          spam.map((mail: any) => <EmailCard key={mail.mId} {...mail} />)
+        ) : (
+          <div style={{ textAlign: "center", padding: "1.2rem" }}>
+            <h2 style={{ color: "#fff" }}>No Mails in Spam </h2>
+          </div>
+        )}
       </div>
     </div>
   );
