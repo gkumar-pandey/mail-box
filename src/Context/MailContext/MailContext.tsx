@@ -25,6 +25,7 @@ export const filterActions = {
 };
 
 const initialState = {
+  allMails: [],
   inbox: [],
   spam: [],
   trash: []
@@ -47,6 +48,7 @@ export const MailContextProvider = ({ children }: any) => {
     const url = "https://example.com/api/allemails";
     try {
       const res: any = await fakeFetch(url);
+      dispatchMail({ type: actions.ADD_TO_ALL_MAILS, payload: res.data });
       dispatchMail({ type: actions.ADD_TO_INBOX, payload: res.data });
     } catch (error) {
       console.log(error);

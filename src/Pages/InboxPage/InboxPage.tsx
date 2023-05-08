@@ -37,6 +37,7 @@ const InboxPage = () => {
         <input
           placeholder="Search...."
           className="search"
+          value={searchQuery}
           onChange={(e) =>
             dispatchInputs({
               type: filterActions.SEARCH,

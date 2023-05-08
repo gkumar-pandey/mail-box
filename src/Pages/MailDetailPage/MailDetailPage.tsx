@@ -1,15 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useMail } from "../../Context";
 import MailDetails from "../../Components/MailDetails/MailDetails";
 
 const MailDetailPage = () => {
   const { id } = useParams();
+
   const {
-    mails: { inbox }
+    mails: { allMails }
   } = useMail();
 
-  const mail = inbox.find((item: any) => item.mId === id);
+  let mail = allMails.find((item: any) => item.mId === id);
 
   return (
     <div>

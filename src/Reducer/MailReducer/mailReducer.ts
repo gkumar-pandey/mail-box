@@ -3,6 +3,8 @@ import { getFilterMailsById } from "../../Utils/getFilterMailsById";
 
 export const mailReducer = (state: any, action: any) => {
   switch (action.type) {
+    case actions.ADD_TO_ALL_MAILS:
+      return { ...state, allMails: action.payload };
     case "ADD_TO_INBOX":
       return { ...state, inbox: action.payload };
     case actions.ADD_TO_TRASH:
