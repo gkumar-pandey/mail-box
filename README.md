@@ -10,6 +10,12 @@
 
 # 🚀 Tech Used
 
+- ReactJs
+- React-router-dom
+- vanilla CSS
+- React tooltip
+- useContext and useReducer Hooks
+
 # 🛠 Features
 
 - user view all emails
@@ -18,3 +24,4 @@
 - user can read and unread emails
 - user mark star to important mails
 - user can restore mails from spam and trash
+- user search and filter mails
